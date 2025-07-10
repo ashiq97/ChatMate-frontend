@@ -14,10 +14,10 @@ export class AppComponent implements OnInit{
   title = 'The ChatMate App';
   users:any;
 
-  constructor(private http: HttpClient,private accountService: AccountService) {}
+  constructor(private accountService: AccountService) {}
 
   ngOnInit(){
-    this.getUser();
+    // this.getUser();
     this.setCurrentUser();
   }
   setCurrentUser()
@@ -25,15 +25,15 @@ export class AppComponent implements OnInit{
     const user:User = JSON.parse(localStorage.getItem('user'));
     this.accountService.setCurrentUser(user);  
   }
-  getUser()
-  {
-      this.http.get('http://localhost:36973/api/users').subscribe({
-        next:(response)=>{
-           this.users = response; 
-        },
-        error:(error)=>{
-          console.log(error);
-        }
-      })
-  }
+  // getUser()
+  // {
+  //     this.http.get('http://localhost:36973/api/users').subscribe({
+  //       next:(response)=>{
+  //          this.users = response; 
+  //       },
+  //       error:(error)=>{
+  //         console.log(error);
+  //       }
+  //     })
+  // }
 } 
